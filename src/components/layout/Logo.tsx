@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
-import logoAsset from "@/assets/morlex-logo.png.asset.json";
+import logoImage from "@/assets/Logo-no-background.png";
 
 /**
  * Official MORLEX logo. The supplied asset is used as-is — never recoloured,
@@ -25,8 +25,8 @@ export function LogoMark({
         )}
       >
         <img
-          src={logoAsset.url}
-          alt=""
+          src={logoImage}
+          alt="MORLEX"
           width={1254}
           height={1254}
           className="h-7 w-7 object-contain"
