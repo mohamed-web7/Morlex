@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /start
+Disallow: /thank-you
+
+Sitemap: https://morlex.agency/sitemap.xml

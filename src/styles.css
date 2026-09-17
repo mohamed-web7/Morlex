@@ -1,0 +1,464 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * MORLEX DESIGN TOKENS
+ * Strict brand palette — do not add or substitute brand colors.
+ *   White  #FFFFFF  primary canvas
+ *   Ivory  #F7F6F2  secondary warm canvas
+ *   Ink    #0A0F1C  primary ink / dark sections
+ *   Gold   #D6B36A  signature accent (rare)
+ *   Slate  #64748B  secondary text
+ *   Cool   #C3C8CD  subtle UI
+ *   Border #E6E7E6  hairlines / dividers
+ */
+
+:root {
+  --morlex-white: #ffffff;
+  --morlex-ivory: #f7f6f2;
+  --morlex-ink: #0a0f1c;
+  --morlex-gold: #d6b36a;
+  --morlex-slate: #64748b;
+  --morlex-cool: #c3c8cd;
+  --morlex-hairline: #e6e7e6;
+
+  --background: var(--morlex-white);
+  --foreground: var(--morlex-ink);
+  --card: var(--morlex-white);
+  --card-foreground: var(--morlex-ink);
+  --popover: var(--morlex-white);
+  --popover-foreground: var(--morlex-ink);
+  --primary: var(--morlex-ink);
+  --primary-foreground: var(--morlex-ivory);
+  --secondary: var(--morlex-ivory);
+  --secondary-foreground: var(--morlex-ink);
+  --muted: var(--morlex-ivory);
+  --muted-foreground: var(--morlex-slate);
+  --accent: var(--morlex-gold);
+  --accent-foreground: var(--morlex-ink);
+  --destructive: #9a3412;
+  --destructive-foreground: var(--morlex-ivory);
+  --border: var(--morlex-hairline);
+  --input: var(--morlex-hairline);
+  --ring: var(--morlex-gold);
+
+  --radius: 0.75rem;
+
+  --container-page: 85rem;
+
+  /* Depth system — low-opacity neutral shadows only */
+  --shadow-hair: 0 1px 2px rgb(10 15 28 / 0.04);
+  --shadow-soft: 0 1px 2px rgb(10 15 28 / 0.03), 0 8px 24px -12px rgb(10 15 28 / 0.09);
+  --shadow-lift: 0 2px 6px rgb(10 15 28 / 0.05), 0 24px 50px -22px rgb(10 15 28 / 0.16);
+
+  --ease-morlex: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@theme inline {
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+
+  --font-display: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --color-white: var(--morlex-white);
+  --color-ivory: var(--morlex-ivory);
+  --color-ink: var(--morlex-ink);
+  --color-gold: var(--morlex-gold);
+  --color-slate: var(--morlex-slate);
+  --color-cool: var(--morlex-cool);
+  --color-hairline: var(--morlex-hairline);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --shadow-hair: var(--shadow-hair);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+
+  --spacing-section: 6rem;
+  --spacing-gutter: 1.5rem;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--morlex-ink);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--morlex-gold);
+    color: var(--morlex-ink);
+  }
+}
+
+/* --- Layout --- */
+
+@utility container-page {
+  width: 100%;
+  max-width: var(--container-page);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+
+  @media (width >= 80rem) {
+    padding-inline: 3rem;
+  }
+}
+
+@utility section-y {
+  /* phone — compact but breathing */
+  padding-block: 3.25rem;
+
+  @media (width >= 30rem) {
+    padding-block: 3.75rem;
+  }
+
+  /* tablet / medium — tighter vertical rhythm */
+  @media (width >= 48rem) {
+    padding-block: 4.25rem;
+  }
+
+  @media (width >= 64rem) {
+    padding-block: 5rem;
+  }
+
+  @media (width >= 80rem) {
+    padding-block: 6rem;
+  }
+}
+
+/* --- Surfaces (background rhythm) --- */
+
+@utility surface-white {
+  background-color: var(--morlex-white);
+}
+
+@utility surface-ivory {
+  background-color: var(--morlex-ivory);
+}
+
+@utility surface-ink {
+  background-color: var(--morlex-ink);
+  background-image: linear-gradient(158deg, #111a2c 0%, var(--morlex-ink) 58%);
+  color: var(--morlex-ivory);
+}
+
+/* --- Ambient light (almost invisible depth) --- */
+
+@utility ambient-gold {
+  background-image: radial-gradient(circle at center, var(--morlex-gold) 0%, transparent 68%);
+  opacity: 0.09;
+  filter: blur(6px);
+}
+
+@utility ambient-slate {
+  background-image: radial-gradient(circle at center, var(--morlex-slate) 0%, transparent 70%);
+  opacity: 0.1;
+  filter: blur(6px);
+}
+
+@utility ambient-gold-dark {
+  background-image: radial-gradient(circle at center, var(--morlex-gold) 0%, transparent 66%);
+  opacity: 0.14;
+  filter: blur(10px);
+}
+
+/* --- Type system --- */
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+@utility index-num {
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+}
+
+@utility display-hero {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.25rem, 5.6vw, 4.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+
+  @media (width >= 48rem) {
+    line-height: 1;
+    letter-spacing: -0.032em;
+  }
+}
+
+@utility heading-section {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8125rem, 4.2vw, 3.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.026em;
+  text-wrap: balance;
+
+  @media (width >= 48rem) {
+    line-height: 1.04;
+    letter-spacing: -0.03em;
+  }
+}
+
+@utility heading-md {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+
+  @media (width >= 48rem) {
+    line-height: 1.08;
+    letter-spacing: -0.024em;
+  }
+}
+
+@utility card-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 1.5vw, 1.5rem);
+  line-height: 1.24;
+  letter-spacing: -0.018em;
+}
+
+@utility body-lg {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+
+  @media (width >= 48rem) {
+    font-size: 1.125rem;
+    line-height: 1.65;
+  }
+}
+
+@utility body-base {
+  font-size: 1rem;
+  line-height: 1.68;
+
+  @media (width >= 48rem) {
+    line-height: 1.6;
+  }
+}
+
+@utility meta-sm {
+  font-size: 0.875rem;
+  line-height: 1.6;
+
+  @media (width >= 48rem) {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+}
+
+@utility hairline {
+  height: 1px;
+  width: 100%;
+  background-color: var(--morlex-hairline);
+}
+
+@utility gold-rule {
+  height: 1px;
+  background-image: linear-gradient(90deg, rgb(214 179 106 / 0.9), rgb(214 179 106 / 0));
+}
+
+/* --- Cards (contrast depends on parent surface) --- */
+
+/* On white surfaces */
+@utility card-on-white {
+  border-radius: 1rem;
+  border: 1px solid var(--morlex-hairline);
+  background-color: var(--morlex-ivory);
+  transition:
+    transform 0.45s var(--ease-morlex),
+    box-shadow 0.45s var(--ease-morlex),
+    border-color 0.45s var(--ease-morlex);
+}
+
+/* On ivory surfaces */
+@utility card-on-ivory {
+  border-radius: 1rem;
+  border: 1px solid var(--morlex-hairline);
+  background-color: var(--morlex-white);
+  box-shadow: var(--shadow-hair);
+  transition:
+    transform 0.45s var(--ease-morlex),
+    box-shadow 0.45s var(--ease-morlex),
+    border-color 0.45s var(--ease-morlex);
+}
+
+/* On ink surfaces */
+@utility card-on-ink {
+  border-radius: 1rem;
+  border: 1px solid rgb(247 246 242 / 0.09);
+  background-color: rgb(247 246 242 / 0.04);
+  color: var(--morlex-ivory);
+  transition:
+    transform 0.45s var(--ease-morlex),
+    border-color 0.45s var(--ease-morlex),
+    background-color 0.45s var(--ease-morlex);
+
+  &:hover {
+    transform: translateY(-3px);
+    border-color: rgb(214 179 106 / 0.34);
+    background-color: rgb(247 246 242 / 0.06);
+  }
+}
+
+/* Ink feature card used on light surfaces */
+@utility card-ink {
+  border-radius: 1rem;
+  border: 1px solid rgb(247 246 242 / 0.1);
+  background-color: var(--morlex-ink);
+  background-image: linear-gradient(158deg, #131d31 0%, var(--morlex-ink) 60%);
+  color: var(--morlex-ivory);
+}
+
+@utility card-lift {
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lift);
+    border-color: rgb(214 179 106 / 0.4);
+  }
+}
+
+/* Small icon frame */
+@utility icon-frame {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  width: 2.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--morlex-hairline);
+  background-color: var(--morlex-white);
+  color: var(--morlex-ink);
+}
+
+@utility icon-frame-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.75rem;
+  width: 2.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(247 246 242 / 0.12);
+  background-color: rgb(247 246 242 / 0.05);
+  color: var(--morlex-gold);
+}
+
+/* --- Motion --- */
+
+@utility reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s var(--ease-morlex),
+    transform 0.6s var(--ease-morlex);
+
+  &[data-shown="true"] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* --- Gradients (palette-derived only) --- */
+
+@utility grad-ink-panel {
+  background-image: linear-gradient(155deg, #111a2c 0%, var(--morlex-ink) 62%);
+}
+
+@utility grad-care {
+  background-image: linear-gradient(140deg, #64748b 0%, #263349 44%, var(--morlex-ink) 100%);
+}
+
+@utility grad-image-ink {
+  background-image: linear-gradient(
+    180deg,
+    rgb(10 15 28 / 0.55) 0%,
+    rgb(10 15 28 / 0.78) 55%,
+    rgb(10 15 28 / 0.92) 100%
+  );
+}
