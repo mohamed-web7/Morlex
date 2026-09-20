@@ -7,7 +7,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-export type PackageSlug = "roofing-booking-page-system";
+export type PackageSlug = "launch-page" | "roofing-booking-page-system" | "growth-site";
 
 export type FeatureGroup = { label: string; items: string[] };
 
@@ -49,8 +49,43 @@ export type MorlexPackage = {
 
 export const packages: MorlexPackage[] = [
   {
-    slug: "roofing-booking-page-system",
+    slug: "launch-page",
     index: "01",
+    name: "Launch Page",
+    who: "One professional page, not a full system.",
+    summary:
+      "A focused landing page for one service in one area, built mobile-first around a single clear next action.",
+    price: "$699",
+    standardPrice: "$1,250",
+    badge: "Early client rate",
+    groups: [
+      {
+        label: "Scope",
+        items: ["One landing page", "One service, one area", "Mobile-first design"],
+      },
+      {
+        label: "Conversion",
+        items: ["Direct call CTA", "Estimate request form", "Reviews section", "Project images"],
+      },
+      { label: "Technical", items: ["Basic speed optimization", "Pre-launch testing"] },
+      { label: "Support", items: ["Two revision rounds", "7 days support"] },
+    ],
+    excludes: [
+      "Full copywriting",
+      "Marketing strategy",
+      "Multiple city pages",
+      "Ad management",
+      "CRM implementation",
+      "Monthly SEO",
+      "Unlimited edits",
+    ],
+    support: "7 days support",
+    revisions: "Two revision rounds",
+    ctaLabel: "Choose Launch Page",
+  },
+  {
+    slug: "roofing-booking-page-system",
+    index: "02",
     name: "Roofing Booking Page System",
     who: "A booking system for one roofing service, one market.",
     summary:
@@ -90,6 +125,32 @@ export const packages: MorlexPackage[] = [
     support: "30 days support",
     revisions: "Two revision rounds",
     ctaLabel: "Choose Booking System",
+  },
+  {
+    slug: "growth-site",
+    index: "03",
+    name: "Growth Site",
+    who: "For multiple services or multiple areas.",
+    summary:
+      "A scalable conversion-focused foundation, structured so services and areas expand without a rebuild.",
+    price: "$3,000",
+    standardPrice: "$3,500",
+    badge: "Early client rate",
+    groups: [
+      {
+        label: "Scope",
+        items: ["Homepage", "Up to 3 service pages", "One area page", "Custom copy"],
+      },
+      { label: "Conversion", items: ["Contact forms", "Conversion tracking"] },
+      {
+        label: "Technical",
+        items: ["Full performance optimization", "Scalable structure", "Future improvement plan"],
+      },
+      { label: "Support", items: ["Two revision rounds", "60 days support"] },
+    ],
+    support: "60 days support",
+    revisions: "Two revision rounds",
+    ctaLabel: "Choose Growth Site",
   },
 ];
 

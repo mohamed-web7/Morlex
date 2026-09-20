@@ -2,23 +2,17 @@ import { ArrowRight, Check, LifeBuoy } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { ButtonLink } from "@/components/ui/actions";
 import { conversionCare } from "@/data/packages";
-import { cn } from "@/lib/utils";
 
-export function ConversionCareBlock({ inline = false }: { inline?: boolean }) {
+export function ConversionCareBlock() {
   return (
-    <Reveal
-      className={cn(
-        "grad-care relative overflow-hidden rounded-[20px] border border-ivory/10 p-6 shadow-soft md:p-9",
-        inline ? "h-full" : "mt-12 lg:mt-16 lg:p-10",
-      )}
-    >
+    <Reveal className="grad-care relative mt-12 overflow-hidden rounded-[20px] border border-ivory/10 p-6 shadow-soft md:p-9 lg:mt-16 lg:p-10">
       <span
         aria-hidden="true"
         className="ambient-gold-dark pointer-events-none absolute -right-16 -top-20 h-[22rem] w-[22rem] rounded-full"
       />
 
-      <div className={cn("relative grid gap-8", !inline && "lg:grid-cols-12 lg:items-center lg:gap-12")}>
-        <div className={cn(!inline && "lg:col-span-5")}>
+      <div className="relative grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-12">
+        <div className="lg:col-span-5">
           <span className="inline-flex items-center gap-2 rounded-[8px] border border-gold/45 px-2.5 py-1 text-[0.6875rem] font-semibold uppercase tracking-[0.11em] text-gold">
             <LifeBuoy aria-hidden="true" size={14} strokeWidth={1.75} />
             Optional — ongoing, not a package
@@ -35,7 +29,7 @@ export function ConversionCareBlock({ inline = false }: { inline?: boolean }) {
           </ButtonLink>
         </div>
 
-        <div className={cn(!inline && "lg:col-span-7")}>
+        <div className="lg:col-span-7">
           <ul className="grid gap-2 sm:grid-cols-2">
             {conversionCare.includes.map((item) => (
               <li

@@ -5,9 +5,9 @@ import { FaqSection } from "@/components/sections/FaqSection";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { site } from "@/config/site";
 
-const title = "Packages & Pricing — Roofing Booking Page System | MORLEX";
+const title = "Packages & Pricing — Launch Page, Booking System, Growth Site | MORLEX";
 const description =
-  "Clear scope and pricing for the Roofing Booking Page System, plus optional Conversion Care.";
+  "Three project packages with clear scope and pricing: Launch Page, Roofing Booking Page System and Growth Site, plus optional Conversion Care.";
 
 export const Route = createFileRoute("/packages")({
   head: () => ({

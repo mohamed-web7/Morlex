@@ -6,7 +6,7 @@ import { findPackage, type PackageSlug } from "@/data/packages";
 import { site } from "@/config/site";
 
 const searchSchema = z.object({
-  package: z.enum(["roofing-booking-page-system"]).optional().catch(undefined),
+  package: z.enum(["launch-page", "roofing-booking-page-system", "growth-site"]).optional().catch(undefined),
 });
 
 const title = "Start a Project — Let's Build Something That Works | MORLEX";

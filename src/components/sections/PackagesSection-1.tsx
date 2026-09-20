@@ -23,22 +23,23 @@ export function PackagesSection({
         {withHeading ? (
           <SectionHeading
             eyebrow={eyebrow}
-            title="One core package. One optional service."
+            title="Three packages. One optional service."
             intro="Fixed scope, written down before the work starts. Payment is 50% at project start and 50% before launch."
           />
         ) : null}
 
         <div
           className={cn(
-            "grid gap-5 lg:grid-cols-2 lg:items-stretch lg:gap-6",
+            "grid gap-5 md:grid-cols-2 md:items-start md:gap-6 lg:grid-cols-3 lg:items-start",
             withHeading && "mt-10 md:mt-12",
           )}
         >
           {packages.map((pkg, i) => (
             <PackageCard key={pkg.slug} pkg={pkg} detailed={detailed} delay={i * 80} />
           ))}
-          <ConversionCareBlock inline />
         </div>
+
+        <ConversionCareBlock />
       </div>
     </section>
   );
